@@ -1,0 +1,12 @@
+# Remove node_modules from git history entirely
+git rm -r --cached node_modules
+git rm -r --cached .next 2>$null
+
+# Create proper .gitignore
+@"
+node_modules/
+.next/
+.env.local
+.env
+*.node
+"@ | Out-File -FilePath .gitignore -Encoding utf8
